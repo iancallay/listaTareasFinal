@@ -10,7 +10,23 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'inicio',
+    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
   },
+  {
+    path: 'detalles',
+    loadChildren: () => import('./detalles/detalles.module').then( m => m.DetallesPageModule)
+  },
+  {
+    path: 'creartarea',
+    loadChildren: () => import('./creartarea/creartarea.module').then( m => m.CreartareaPageModule)
+  },
+  {
+    path: 'editartarea',
+    loadChildren: () => import('./editartarea/editartarea.module').then( m => m.EditartareaPageModule)
+  },
+
 ];
 
 @NgModule({
