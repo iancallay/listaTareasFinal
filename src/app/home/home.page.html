@@ -9,6 +9,43 @@
 <ion-content [fullscreen]="true">
   <ion-item>
     <ion-button (click)="crear()">Crear tarea</ion-button>
+    <ion-button (click)="setOpen(true)" expand="true">Crear tarea</ion-button>
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Nueva tarea</ion-title>
+
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false)">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <form (ngSubmit)="submitForm()">
+            <ion-item>
+              <ion-label position="floating">Título</ion-label>
+              <ion-input [(ngModel)]="formData.title" name="title" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Descripción</ion-label>
+              <ion-textarea [(ngModel)]="formData.description" name="description" required></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Estado</ion-label>
+              <ion-select [(ngModel)]="formData.status" name="status" required>
+                <ion-select-option value="activo">Activo</ion-select-option>
+                <ion-select-option value="inactivo">Inactivo</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-button expand="full" type="submit">Guardar</ion-button>
+          </form>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
     <ion-button (click)="detalle()">Detalle tarea</ion-button>
 
   </ion-item>
